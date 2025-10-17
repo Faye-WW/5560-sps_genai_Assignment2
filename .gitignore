@@ -1,0 +1,27 @@
+# Python cache
+__pycache__/
+*.py[oc]
+*.pyo
+
+# Build artifacts
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual env
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Datasets & trained model files
+# (not required for GitHub submission, can be regenerated)
+data/
+models/
+*.tar.gz
+*.zip
+
