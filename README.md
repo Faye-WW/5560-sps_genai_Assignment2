@@ -1,28 +1,25 @@
 SPS GenAI API
 1. Project Overview
+This project extends the FastAPI application from Assignment 1 by adding a Convolutional Neural Network (CNN) image classifier trained on CIFAR-10, while still supporting spaCy embeddings. The API can run locally or via Docker.
 
-This project is a simple FastAPI application that provides spaCy embeddings and cosine similarity functions.
-Features include:
+2. Features
+Word embedding using spaCy
+Sentence embedding + cosine similarity
+Image classification API using CNN (CIFAR-10)
+Docker deployment
+Organized helper library for model training
 
-Word embeddings
-
-Sentence embeddings
-
-Batch sentence embeddings
-
-Cosine similarity (words and sentences)
-
-2. Environment Setup
+3. Environment Setup
 Clone the repository
 ```bash
-git clone https://github.com/<your-username>/sps-genai-api.git
-cd sps-genai-api
+git clone https://github.com/Faye-WW/5560-sps_genai_Assignment2.git
+cd 5560-sps_genai_Assignment2
 ```
 Create a virtual environment
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate   # Mac/Linux
-.\.venv\Scripts\activate    # Windows
+source .venv/bin/activate       # Mac/Linux
+.\.venv\Scripts\activate        # Windows
 ```
 Install dependencies
 ```bash
@@ -30,12 +27,21 @@ pip install -r requirements.txt
 python -m spacy download en_core_web_md
 ```
 
-3. Run the Server
+4. Train the CNN Model (CIFAR-10)
+Before classification, train the CNN model:
+```
+python -m app.train_cnn
+```
+This will generate:
+```
+models/cnn.pt
+```
+
+5. Run the Server
 
 From the project root directory, run:
 
 `uvicorn app.main:app --reload`
-
 
 You should see something like:
 
@@ -107,3 +113,4 @@ If you see (base) from Anaconda, deactivate it first:
 conda deactivate
 source .venv/bin/activate
 ```
+
