@@ -54,8 +54,9 @@ Upload an image and classify
 curl -X POST "http://127.0.0.1:8000/classify/image" \
   -H "accept: application/json" \
   -H "Content-Type: multipart/form-data" \
-  -F "file=@cat.jpg"
+  -F "file=@/path/to/your/test.png"
 ```
+Replace /path/to/your/test.png with the actual file path on your computer.  
 
 7. Run with Docker  
 Build image:  
@@ -99,6 +100,7 @@ If you see (base) from Anaconda, deactivate it first:
 conda deactivate
 source .venv/bin/activate
 ```
+
 
 
 
