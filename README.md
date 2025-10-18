@@ -3,11 +3,11 @@ SPS GenAI API
 This project extends the FastAPI application from Assignment 1 by adding a Convolutional Neural Network (CNN) image classifier trained on CIFAR-10, while still supporting spaCy embeddings. The API can run locally or via Docker.
 
 2. Features
-Word embedding using spaCy
-Sentence embedding + cosine similarity
-Image classification API using CNN (CIFAR-10)
-Docker deployment
-Organized helper library for model training
+Word embedding using spaCy   
+Sentence embedding + cosine similarity   
+Image classification API using CNN (CIFAR-10)   
+Docker deployment   
+Organized helper library for model training   
 
 3. Environment Setup
 Clone the repository
@@ -104,5 +104,6 @@ If you see (base) from Anaconda, deactivate it first:
 conda deactivate
 source .venv/bin/activate
 ```
+
 
 
