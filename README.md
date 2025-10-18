@@ -38,9 +38,9 @@ models/cnn.pt
 ```
 
 5. Run the Server   
-From the project root directory, run:
-`uvicorn app.main:app --reload`
-You should see something like:
+From the project root directory, run:  
+`uvicorn app.main:app --reload`  
+You should see something like:  
 `Uvicorn running on http://127.0.0.1:8000`
 
 6. Test the API   
@@ -99,6 +99,7 @@ If you see (base) from Anaconda, deactivate it first:
 conda deactivate
 source .venv/bin/activate
 ```
+
 
 
 
