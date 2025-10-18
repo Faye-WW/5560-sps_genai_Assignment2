@@ -47,70 +47,62 @@ You should see something like:
 
 `Uvicorn running on http://127.0.0.1:8000`
 
-4. Test the API
+6. Test the API
 
 Method 1: Swagger UI (Recommended)
-
-Go to 👉 http://127.0.0.1:8000/docs
-
+Go to http://127.0.0.1:8000/docs
 You can explore and test all endpoints interactively.
 
 Method 2: Using curl
-
-(1) Word embedding
+Upload an image and classify
 ```bash
-curl -X POST "http://127.0.0.1:8000/embed/word" \
-     -H "Content-Type: application/json" \
-     -d '{"word":"apple"}'
+curl -X POST "http://127.0.0.1:8000/classify/image" \
+  -H "accept: application/json" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@cat.jpg"
 ```
 
-(2) Sentence embedding
-```bash
-curl -X POST "http://127.0.0.1:8000/embed/sentence" \
-     -H "Content-Type: application/json" \
-     -d '{"text":"Hello world"}'
+7. Run with Docker
+Build image:
 ```
-
-(3) Batch sentence embeddings
-```bash
-curl -X POST "http://127.0.0.1:8000/embed/sentence" \
-     -H "Content-Type: application/json" \
-     -d '{"texts":["Hello world","Good morning"]}'
+docker build -t sps-genai .
 ```
-
-(4) Word similarity
-```bash
-curl -X POST "http://127.0.0.1:8000/similarity/words" \
-     -H "Content-Type: application/json" \
-     -d '{"a":"king","b":"queen"}'
+Run container (mount model file):
 ```
-
-(5) Sentence similarity
-```bash
-curl -X POST "http://127.0.0.1:8000/similarity/sentences" \
-     -H "Content-Type: application/json" \
-     -d '{"a":"I love apples","b":"I enjoy oranges"}'
+docker run -p 8000:8000 -v $(pwd)/models:/app/models sps-genai
 ```
+Access API:
+http://127.0.0.1:8000/docs
 
-5. Project Structure
+8. Project Structure
 ```text
 sps_genai/
-├── app/
-│   ├── embeddings.py    # spaCy embedding functions
-│   └── main.py          # FastAPI entry point
 │
-├── README.md
+├── app/
+│   ├── main.py           # FastAPI API
+│   ├── embeddings.py     # spaCy embeddings
+│   ├── inference.py      # CNN prediction
+│   └── train_cnn.py      # CNN training
+│
+├── helper_lib/           # CNN helper modules
+│   ├── model.py          # CNN architecture
+│   ├── trainer.py        # training loop
+│   ├── data_loader.py    # CIFAR10 loader
+│   └── utils.py
+│
+├── models/               # cnn.pt saved model (ignored by Git)
+├── Dockerfile
 ├── requirements.txt
-└── .gitignore
+├── .gitignore
+└── README.md
 ```
 
-6. Notes
-
+9. Notes
 Always activate the .venv environment before running the server.
-
 If you see (base) from Anaconda, deactivate it first:
 ```bash
 conda deactivate
 source .venv/bin/activate
 ```
+
 
